@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История жизни | Никита Шепелин</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        .timeline {
+            position: relative;
+            margin: 60px 0 100px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #ff6b35, #ffaa33, #ff6b35);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+        .card {
+            width: 42%;
+            background: #fff;
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ff6b35;
+        }
+        .card .period {
+            font-size: 16px;
+            font-weight: 600;
+            color: #888;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+        }
+        .card p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #2a2a2a;
+            margin-bottom: 20px;
+        }
+        .photo-strip {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .photo-strip img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.2s;
+        }
+        .photo-strip img:hover {
+            transform: scale(1.05);
+        }
+        @media (max-width: 900px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { justify-content: center !important; }
+            .card { width: 90% !important; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="index.html" class="back-link">← На главную</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1 style="font-size: 48px; font-weight: 800; margin: 40px 0 20px;">Моя <span style="color:#ff6b35;">история</span></h1>
+</div>
+
+<div class="timeline container">
+    <!-- 8 блоков: слева, справа, слева... -->
+    <div class="timeline-item">
+        <div class="card">
+            <h3>Посёлок Северный</h3>
+            <div class="period">1995 – 2002</div>
+            <p>Родился и вырос в маленьком посёлке. Первые шаги, школа, друзья. Там я впервые увидел компьютер и понял — это моё.</p>
+            <div class="photo-strip">
+                <img src="https://picsum.photos/id/10/100/100" alt="фото">
+                <img src="https://picsum.photos/id/12/100/100" alt="фото">
+            </div>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="card">
+            <h3>Школа и первый код</h3>
+            <div class="period">2003 – 2010</div>
+            <p>Переезд в город. Начал изучать HTML и Pascal. Участвовал в олимпиадах по информатике.</p>
+            <div class="photo-strip">
+                <img src="https://picsum.photos/id/15/100/100" alt="фото">
+                <img src="https://picsum.photos/id/20/100/100" alt="фото">
+                <img src="https://picsum.photos/id/26/100/100" alt="фото">
+            </div>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="card">
+            <h3>Университет и фриланс</h3>
+            <div class="period">2011 – 2016</div>
+            <p>Поступил на программную инженерию. Первые заказы на фрилансе — делал сайты для местных компаний.</p>
+            <div class="photo-strip">
+                <img src="https://picsum.photos/id/28/100/100" alt="фото">
+                <img src="https://picsum.photos/id/30/100/100" alt="фото">
+            </div>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="card">
+            <h3>Первая работа в IT</h3>
+            <div class="period">2017 – 2018</div>
+            <p>Junior frontend в стартапе. Реакт, команда, дедлайны. Научился работать в режиме многозадачности.</p>
+            <div class="photo-strip">
+                <img src="https://picsum.photos/id/36/100/100" alt="фото">
+                <img src="https://picsum.photos/id/42/100/100" alt="фото">
+            </div>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="card">
+            <h3>Middle и агентство</h3>
+            <div class="period">2019 – 2021</div>
+            <p>Переход в продуктовую компанию. Наставничество джунов, код-ревью, архитектура проектов.</p>
+            <div class="photo-strip">
+                <img src="https://picsum.photos/id/48/100/100" alt="фото">
+                <img src="https://picsum.photos/id/55/100/100" alt="фото">
+                <img src="https://picsum.photos/id/59/100/100" alt="фото">
+            </div>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="card">
+            <h3>Senior и 3D-мир</h3>
+            <div class="period">2022 – 2023</div>
+            <p>Погружение в WebGL. Создание 3D-конфигураторов, обучение команды. Участие в международных конференциях.</p>
+            <div class="photo-strip">
+                <img src="https://picsum.photos/id/66/100/100" alt="фото">
+                <img src="https://picsum.photos/id/76/100/100" alt="фото">
+            </div>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="card">
+            <h3>Tech Lead</h3>
+            <div class="period">2024 – 2025</div>
+            <p>Руководство отделом фронтенда. Построение процессов, собеседования, стратегия развития.</p>
+            <div class="photo-strip">
+                <img src="https://picsum.photos/id/88/100/100" alt="фото">
+                <img src="https://picsum.photos/id/91/100/100" alt="фото">
+            </div>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="card">
+            <h3>Собственное дело</h3>
+            <div class="period">2025 – сейчас</div>
+            <p>Открыл студию веб-разработки. Помогаю бизнесу создавать мощные и быстрые продукты.</p>
+            <div class="photo-strip">
+                <img src="https://picsum.photos/id/100/100/100" alt="фото">
+                <img src="https://picsum.photos/id/104/100/100" alt="фото">
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>© 2025 Никита Шепелин — история жизни</p>
+    </div>
+</footer>
+</body>
+</html>

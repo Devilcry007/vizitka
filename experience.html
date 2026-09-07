@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой опыт| Никита Шепелин</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #fef5f0 100%);
+            transition: background 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            color: #1a1a1a;
+            min-height: 100vh;
+        }
+
+        body.exp0 { background: linear-gradient(135deg, #ffffff 0%, #fff0ea 100%); }
+        body.exp1 { background: linear-gradient(135deg, #fef9f5 0%, #ffe6dc 100%); }
+        body.exp2 { background: linear-gradient(135deg, #f5f0ec 0%, #ffddd0 100%); }
+        body.exp3 { background: linear-gradient(135deg, #ffffff 0%, #fce8e0 100%); }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.2s;
+        }
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .experience-grid {
+            display: flex;
+            gap: 60px;
+            margin: 60px 0 100px;
+            align-items: flex-start;
+        }
+
+        .exp-detail {
+            flex: 1.4;
+            animation: fadeSlideIn 0.5s ease-out;
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .exp-detail .date {
+            font-size: 16px;
+            font-weight: 600;
+            color: #ff6b35;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .exp-detail h2 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+        .exp-detail .subtitle {
+            font-size: 20px;
+            font-weight: 500;
+            color: #4a4a4a;
+            margin-bottom: 32px;
+        }
+        .exp-detail .description {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #2a2a2a;
+            max-width: 90%;
+        }
+        .exp-detail .full-description {
+            margin-top: 32px;
+            font-size: 16px;
+            color: #555;
+            border-left: 3px solid #ff6b35;
+            padding-left: 20px;
+        }
+        .exp-detail .project-link {
+            margin-top: 40px;
+        }
+        .exp-detail .project-link a {
+            background: #ff6b35;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .exp-detail .project-link a:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .exp-thumbnails {
+            flex: 0.8;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .thumbnail {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .thumbnail:hover {
+            background: white;
+            transform: translateX(6px);
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+            border-color: #ff6b3540;
+        }
+        .thumbnail.active {
+            background: white;
+            border-left: 4px solid #ff6b35;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+        }
+        .thumbnail-icon {
+            width: 56px;
+            height: 56px;
+            background: #ff6b3510;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            transition: background 0.2s;
+        }
+        .thumbnail:hover .thumbnail-icon {
+            background: #ff6b3520;
+        }
+        .thumbnail-info h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .thumbnail-info p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        @media (max-width: 1000px) {
+            .experience-grid {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .exp-detail h2 {
+                font-size: 48px;
+            }
+            .exp-thumbnails {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .thumbnail {
+                width: calc(50% - 20px);
+            }
+            .container {
+                padding: 0 24px;
+            }
+        }
+        @media (max-width: 600px) {
+            .thumbnail {
+                width: 100%;
+            }
+            .exp-detail .description {
+                max-width: 100%;
+            }
+        }
+
+        footer {
+            border-top: 1px solid rgba(0,0,0,0.05);
+            padding: 32px 0;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body class="exp0">
+
+<header>
+    <div class="container">
+        <a href="index.html" class="back-link">← На главную</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="experience-grid">
+        <div class="exp-detail" id="expDetail"></div>
+        <div class="exp-thumbnails" id="thumbnailsContainer"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Никита Шепелин</p>
+    </div>
+</footer>
+
+<script>
+    const experiences = [
+        {
+            id: 0, date: "2019 — 2020", title: "Начало пути - специалист L1/L2", subtitle: "Специалист технической поддержки",
+            shortDesc: "Первый опыт работы в офисе и на удалёнке. Работа в международной компании Teleperformance RU в качестве специалиста технической поддержки. Техническое сопровождение, коммуникация с пользователями в чатах и по телефону по вопросам работы приложений Huawei/Honor.",
+            fullDesc: "Техническая поддержка пользователей (уровень L1/L2);Знал экосистему приложений Huawei / Honor; работал с многоканальной коммуникацией: чаты, телефонная система (CTI/VoIP, могло быть сразу несколько чатов);использование систем биллинга и тикетинга;процедура эскалации: выявлял проблемы и передавал в смежные отделы по SLA. Клиентоориентированность и эмпатия при общении с недовольными или нетехничными пользователями;стрессоустойчивость — совмещение телефонных звонков, чатов и удалённого формата;мультизадачность: работа в нескольких окнах и каналах одновременно;чёткая письменная и устная русская речь (для чатов и телефона);командное взаимодействие (переадресация, внутренние коммуникации);адаптивность — переключение между офисным и удалённым режимом без потери качества.",
+            projectLink: "https://teleperformancerabota.ru/", icon: "🏢", bgClass: "exp0"
+        },
+        {
+            id: 1, date: "2021 — 2024", title: "Специалист по работе с клиентами", subtitle: "ООО Инфорпмпроект",
+            shortDesc: "Проведение более 360 лекций и обучающих мероприятий(очные/online - групповые/индивидуальные). Снизил риски отказов - менее 0,65% и увеличил удовлетворенность клиентов на 20%. Работа с 40+ клиентами среднего и крупного бизнеса(машиностроение, IT, химия, металлургия и др.)",
+            fullDesc: "Сопровождение клиента от начала проекта до его завершения; Выполнение целей по допродажам и удержаниям клиентов; Отслеживание работы команды по выполнению всех условий договора; Проведение обучающих мероприятий и лекций, на аудиторию до 60 человек;Командировки с целью знакомства с ЛПР/ЛВПР, а так же с целью очного обучения; Формирование лояльности клиента по отношению к компании и продукту; Заключение дополнительных сделок и осуществление дополнительных продаж; Ведение переговоров и участие в презентацияхПодготовка документации(договора, коммерческие предложения, отчеты); Участие в рабочих группах по развитию крупных корпоративных клиентов КМ 600 т.р.",
+            projectLink: "https://informproekt.ru/", icon: "💻", bgClass: "exp1"
+        },
+        {
+            id: 2, date: "2024 — 2025", title: "Ведущий менеджер сопровождения", subtitle: "ООО Информпроект Групп",
+            shortDesc: "Руководство командой менеджеров(2 человека): постановка целей и задач контроль за выполнением целей, обучение, совместная проработка сложных задач. Работа с 20+ корпоративными клиентами. Разработал и внедрил с проектной командой уникальный модуль под запрос заказчика. Интегрировал с помощью API систему управления НТД, что ускорило взаимодейсвтие заказчика с документацией на 50%. Лучший отдел сопровождения в компании по отказам - меньше 0.34%; Внедрил в свой отдел Kanban методологию, что ускорило и оптимизировало работу над задачами клиентов; доработка новых процессов внутри компании и подготовка SLA.",
+            fullDesc: "Разработка или модернизация обучающих программ для повышения их производительности и качества; Координирование деятельности с другими внутренними отделами с целью выполнения требований клиентов и компании; Разработка и внедрение одобренных правил и методов работы, а также стандартов; Отчетность руководству о результатах работы отдела/проектной команды; Участие в разработке новых продуктов компании; Ведение переговоров, участие в презентациях; Перевыполнение целей по удержаниям клиентов и допродажам; Сопровождение корпоративных клиентов(полный цикл: от принятия до развития); Планирование и проведение работ по расширению клиентов; Выстраивание отношений с ЛПР и ЛВПР клиентов( включая организации Роснефти,Газпромнефть, Уралхим, Галополимер,Уралвагонзавод, Уралтрансмаш, ОДК-Газовые турбины и др.)",
+            projectLink: "https://devilcry007.github.io/support-team/", icon: "🎨", bgClass: "exp2"
+        },
+        {
+            id: 3, date: "2025 — 2026", title: "Руководитель проектов", subtitle: "Pinbox",
+            shortDesc: "Работал с клиентами малого и среднего бизнеса - более 70 проектов. Разработка индивидуальных стратегий под каждого клиента, контроль на всех этапах - как итог: ускорение задач и принятие решений на 30%. Выстариваение долгосрочных и ваимовыгодных отношений - 95% успешных пролонгаций каждый месяц. Project-менеджмент: взаимодейсвтие со смежными отделами(дизайнерами, копирайтерами, разработчиками). Увеличивал рекламные бюджеты, ежемесячне cross-sell доп. продажи - прогнозирование развития. Ведение отчености. Работа по метрикам LTV, ROI, NPS, CAC, CPA, CTR. Проведение A/B тестирований по стратегиям развития. Успешная передача в отдел разработки ТЗ от клиентов по улучшенмю сервиса и дальнейшая её реализация.",
+            fullDesc: "Активно взаимодействовал с клиентами с момента передачи клиента отделом продаж: -брифирование(ВКС или по телефону, так же очные встречи), -ежедневное консультирование и решение текущих задач(ВКС или по телефону, так же очные встречи), -формирование стратегии развития проектов клиента в соответствии с целями и задачами клиента(ВКС или по телефону, так же очные встречи); Ежедневно выставлял поступающие от клиентов задачи для смежных отделов и управлял процессом их реализации. Самостоятельно планировал действия; Работа на результат, отслеживание её по метрикам, на основе анализа - эффективное развитие проекта клиента. Выстраивание долгосрочных взаимоотношений с клиентом. 95% успешных пролонгаций более 15 проектов каждый месяц; Прогнозировал результаты, планировал работу по проектам наперёд(месяц, квартал, полгода, год);Включение в работу творчества, аналитики, системного мышления и автономности; Снизил риски отказов за счёт донесения ценностей работы с системой, правильно выстроенных коммуникаций и грамотным управлением рекламным бюджетом на 9%;  ",
+            projectLink: "#", icon: "🚀", bgClass: "exp3"
+        }
+    ];
+
+    const detailContainer = document.getElementById('expDetail');
+    const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+    let currentId = 0;
+    let hoverTimeout = null;
+
+    function renderDetail(id) {
+        const exp = experiences.find(e => e.id === id);
+        if (!exp) return;
+        detailContainer.innerHTML = `
+            <div class="date">${exp.date}</div>
+            <h2>${exp.title}</h2>
+            <div class="subtitle">${exp.subtitle}</div>
+            <div class="description">${exp.shortDesc}</div>
+            <div class="full-description">${exp.fullDesc}</div>
+            <div class="project-link">
+                <a href="${exp.projectLink}" target="_blank" rel="noopener noreferrer">
+                    🔗 Посмотреть проект
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="white" stroke-linecap="round"/>
+                    </svg>
+                </a>
+            </div>
+        `;
+        document.body.className = exp.bgClass;
+        currentId = id;
+        updateActiveThumbnail(id);
+    }
+
+    function renderThumbnails() {
+        thumbnailsContainer.innerHTML = '';
+        experiences.forEach(exp => {
+            const thumb = document.createElement('div');
+            thumb.className = `thumbnail ${exp.id === currentId ? 'active' : ''}`;
+            thumb.innerHTML = `
+                <div class="thumbnail-icon">${exp.icon}</div>
+                <div class="thumbnail-info">
+                    <h4>${exp.title}</h4>
+                    <p>${exp.date}</p>
+                </div>
+            `;
+            thumb.addEventListener('mouseenter', () => {
+                if (currentId === exp.id) return;
+                if (hoverTimeout) clearTimeout(hoverTimeout);
+                hoverTimeout = setTimeout(() => renderDetail(exp.id), 150);
+            });
+            thumb.addEventListener('mouseleave', () => {
+                if (hoverTimeout) clearTimeout(hoverTimeout);
+            });
+            thumbnailsContainer.appendChild(thumb);
+        });
+    }
+
+    function updateActiveThumbnail(activeId) {
+        document.querySelectorAll('.thumbnail').forEach((thumb, idx) => {
+            if (experiences[idx].id === activeId) thumb.classList.add('active');
+            else thumb.classList.remove('active');
+        });
+    }
+
+    renderThumbnails();
+    renderDetail(0);
+</script>
+</body>
+</html>

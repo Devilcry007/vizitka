@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Никита Шепелин | Специалист высшего уровня</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <div class="jelly-mini" id="jellyCanvasMini"></div>
+            <div class="logo">N<span>.</span>Shepelin</div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">Путь эксперта</div>
+                <h1>Привет, я <span class="highlight">Никита</span><br>специалист высшего уровня</h1>
+                <p class="hero-description">
+                     Создаю результат, который работает. 6 лет опыта, взаимодействие более чем со 100 клиентами.  
+                    Моя история — от новичка до топ-специалиста, который превращает сложные задачи в прибыль.
+                </p>
+                <div class="btn-group">
+                    <a href="https://t.me/Devilcry_y" class="btn-primary">Связаться</a>
+                    <a href="experience.html" class="btn-outline">Мой опыт</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <div class="photo-frame">
+                    <img src="белая с белым фоном.jpeg" alt="Никита Шепелин">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="container">
+            <div class="section-title">Немного <span>о себе</span></div>
+            <div class="grid-3">
+                <a href="history.html-" class="card-link">
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>История жизни</h3>
+                        <p>Рождение героя - родной посёлок, школа, городская жизнь, взросление, путешествия и многое другое.</p>
+                    </div>
+                </a>
+                <a href="webgl.html" class="card-link">
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>Фотогалерея</h3>
+                        <p>Всегда хотел где то ещё делиться фотографиями из жизни.</p>
+                    </div>
+                </a>
+                <a href="optimization.html-" class="card-link">
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>Планы на жизнь</h3>
+                        <p>Решил немного поделиться частичкой своей стратегии на жизнь, небольшим переживаниям и мечтам.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 Никита Шепелин — сайт-визитка. Контент будет заменён.</p>
+    </div>
+</footer>
+
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+        }
+    }
+</script>
+<script type="module">
+    import * as THREE from 'three';
+
+    const miniContainer = document.getElementById('jellyCanvasMini');
+    const miniWidth = 60, miniHeight = 60;
+    const sceneMini = new THREE.Scene();
+    sceneMini.background = null;
+    const cameraMini = new THREE.PerspectiveCamera(45, miniWidth / miniHeight, 0.1, 1000);
+    cameraMini.position.set(0, 0, 2.2);
+    cameraMini.lookAt(0, 0, 0);
+    const rendererMini = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    rendererMini.setSize(miniWidth, miniHeight);
+    rendererMini.setPixelRatio(window.devicePixelRatio);
+    miniContainer.appendChild(rendererMini.domElement);
+    
+    const geometryMini = new THREE.SphereGeometry(0.7, 96, 96);
+    const materialMini = new THREE.MeshStandardMaterial({
+        color: 0xff6b35,
+        roughness: 0.3,
+        metalness: 0.7,
+        emissive: 0x442200,
+        emissiveIntensity: 0.15
+    });
+    const sphereMini = new THREE.Mesh(geometryMini, materialMini);
+    sceneMini.add(sphereMini);
+    
+    const posAttrMini = geometryMini.attributes.position;
+    const origPosMini = posAttrMini.array.slice();
+    const normalsMini = geometryMini.attributes.normal.array;
+    const vertexCountMini = posAttrMini.count;
+    
+    const ambientMini = new THREE.AmbientLight(0x404040, 0.6);
+    sceneMini.add(ambientMini);
+    const lightMini = new THREE.DirectionalLight(0xffffff, 1);
+    lightMini.position.set(2, 2, 3);
+    sceneMini.add(lightMini);
+    const backMini = new THREE.DirectionalLight(0xffaa66, 0.5);
+    backMini.position.set(-1, 1, -1);
+    sceneMini.add(backMini);
+    const pointMini = new THREE.PointLight(0xff6b35, 0.6);
+    pointMini.position.set(0.8, 0.8, 1.2);
+    sceneMini.add(pointMini);
+    
+    let timeMini = 0;
+    function animateJellyMini() {
+        timeMini += 0.016;
+        const positions = geometryMini.attributes.position.array;
+        for (let i = 0; i < vertexCountMini; i++) {
+            const ix = i*3, iy = i*3+1, iz = i*3+2;
+            const ox = origPosMini[ix], oy = origPosMini[iy], oz = origPosMini[iz];
+            const nx = normalsMini[ix], ny = normalsMini[iy], nz = normalsMini[iz];
+            const angleX = ox * 2.5, angleY = oy * 2.2, angleZ = oz * 2.8;
+            const t1 = timeMini * 1.8, t2 = timeMini * 2.4;
+            const amp = 0.09;
+            const offset = amp * (
+                Math.sin(angleX * 1.3 + t1) * Math.cos(angleY * 1.1 + t2) +
+                Math.sin(angleY * 1.7 + t1 * 1.2) * Math.cos(angleZ * 1.4 + t2 * 0.9) +
+                Math.sin(angleZ * 2.0 + t1 * 0.7) * 0.8
+            ) / 1.5;
+            positions[ix] = ox + nx * offset;
+            positions[iy] = oy + ny * offset;
+            positions[iz] = oz + nz * offset;
+        }
+        geometryMini.attributes.position.needsUpdate = true;
+        geometryMini.computeVertexNormals();
+    }
+    
+    function renderMini() {
+        animateJellyMini();
+        pointMini.position.x = 0.8 + Math.sin(timeMini) * 0.1;
+        pointMini.position.y = 0.8 + Math.cos(timeMini * 0.7) * 0.1;
+        rendererMini.render(sceneMini, cameraMini);
+        requestAnimationFrame(renderMini);
+    }
+    renderMini();
+</script>
+</body>
+</html>
