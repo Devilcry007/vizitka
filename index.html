@@ -7,40 +7,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="common.css">
     <style>
-        /* ================= ПРАВКИ (перекрывают common.css) ================= */
+        /* ================= ДЕСКТОП ================= */
+        .hero { justify-content: center; }
+        .hero-content { padding-left: 5rem; }
 
-        /* 1. Текст с отступом слева — ближе к фото, блок по центру */
-        .hero {
-            justify-content: center;
-        }
-        .hero-content {
-            padding-left: 5rem; /* ~5 см от левого края */
-        }
-
-        /* 2. Мобильная версия — фото и текст РЯДОМ друг напротив друга */
+        /* ================= МОБИЛКА ================= */
         @media (max-width: 768px) {
-
             html body main .container {
-                padding: 0 10px !important;
+                padding: 0 12px !important;
                 max-width: 100% !important;
                 width: 100% !important;
             }
-
-            /* GRID вместо flex — старые flex-правила common.css не сработают */
             html body .hero {
                 display: grid !important;
-                grid-template-columns: 1fr 78px !important;
+                grid-template-columns: 1fr 110px !important;
                 column-gap: 10px !important;
                 align-items: start !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                padding: 12px 0 !important;
+                padding: 14px 0 !important;
                 flex-direction: unset !important;
                 flex-wrap: unset !important;
                 justify-content: unset !important;
             }
-
-            /* Текстовая колонка — растягивается на всё свободное место */
             html body .hero-content {
                 width: 100% !important;
                 max-width: 100% !important;
@@ -51,7 +40,6 @@
                 align-items: flex-start !important;
                 text-align: left !important;
             }
-
             html body .hero-content h1,
             html body .hero-content p,
             html body .hero-content .hero-description {
@@ -60,18 +48,16 @@
                 min-width: 0 !important;
                 box-sizing: border-box !important;
             }
-
-            /* Фото — фиксированная узкая колонка справа */
+            /* Фото — крупное, 110px */
             html body .hero-photo,
             html body .photo-frame {
-                width: 78px !important;
-                max-width: 78px !important;
+                width: 110px !important;
+                max-width: 110px !important;
                 min-width: 0 !important;
                 flex: none !important;
                 margin: 0 !important;
                 align-self: start !important;
             }
-
             html body .hero-photo img,
             html body .photo-frame img {
                 width: 100% !important;
@@ -80,46 +66,52 @@
                 display: block !important;
                 object-fit: contain !important;
             }
-
             html body .hero-badge {
                 width: auto !important;
-                font-size: 0.58rem !important;
+                font-size: 0.6rem !important;
                 padding: 0.15rem 0.5rem !important;
-                margin: 0 0 4px 0 !important;
+                margin: 0 0 6px 0 !important;
                 letter-spacing: 0.5px !important;
             }
-
             html body .hero h1 {
                 font-size: 1rem !important;
-                line-height: 1.22 !important;
+                line-height: 1.24 !important;
                 margin: 4px 0 !important;
             }
-
             html body .hero-description {
                 font-size: 0.72rem !important;
-                line-height: 1.35 !important;
-                margin: 4px 0 !important;
+                line-height: 1.38 !important;
+                margin: 6px 0 !important;
             }
 
-            /* Кнопки — по центру страницы (сдвиг вправо на полширины фото-колонки) */
+            /* ОРАНЖЕВАЯ ЛИНИЯ ПОД «Никита» — тоньше */
+            html body .hero h1 .highlight {
+                border-bottom-width: 1.5px !important;
+                text-decoration-thickness: 1.5px !important;
+                text-underline-offset: 3px !important;
+                padding-bottom: 0 !important;
+            }
+
+            /* Кнопки — слева, вровень с текстом (как на ПК) */
             html body .hero-content .btn-group {
                 display: flex !important;
-                flex-direction: column !important;
+                flex-direction: row !important;
                 align-items: center !important;
-                gap: 6px !important;
-                margin-top: 10px !important;
+                justify-content: flex-start !important;
+                gap: 8px !important;
+                margin-top: 12px !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                transform: translateX(44px) !important;
+                transform: none !important;
             }
-
             html body .btn-primary,
             html body .btn-outline {
-                padding: 8px 10px !important;
-                font-size: 0.74rem !important;
+                padding: 8px 14px !important;
+                font-size: 0.72rem !important;
                 width: auto !important;
-                min-width: 150px !important;
+                min-width: 0 !important;
                 text-align: center !important;
+                white-space: nowrap !important;
             }
         }
     </style>
@@ -142,7 +134,7 @@
                 <div class="hero-badge">Путь эксперта</div>
                 <h1>Привет, я <span class="highlight">Никита,</span><br>специалист - который Вам нужен</h1>
                 <p class="hero-description">
-                     Результат, который видно. 6 лет опыта, более 100 довольных клиентов. Моя история — от новичка до топ-специалиста, для которого нет нерешаемых задач.
+                    Результат, который видно. 6 лет опыта, более 100 довольных клиентов. Моя история — от новичка до топ-специалиста, для которого нет нерешаемых задач.
                 </p>
                 <div class="btn-group">
                     <a href="https://t.me/Devilcry_y" class="btn-primary">Связаться</a>
