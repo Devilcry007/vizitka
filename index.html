@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Никита Шепелин | Специалист - который Вам нужен</title>
+
+    <!-- ========== FAVICON (буква N) ========== -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23ff6b35'/><text x='50' y='73' font-family='Arial,Helvetica,sans-serif' font-size='74' font-weight='900' fill='%23ffffff' text-anchor='middle'>N</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23ff6b35'/><text x='50' y='73' font-family='Arial,Helvetica,sans-serif' font-size='74' font-weight='900' fill='%23ffffff' text-anchor='middle'>N</text></svg>">
+    <meta name="theme-color" content="#ff6b35">
+    <!-- ====================================== -->
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="common.css">
     <style>
@@ -401,7 +408,7 @@
 
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
-                if (entry.isIntersecting && !entry.target.dataset.done) {
+                if (entry.isIntersecting && !entry.dataset.done) {
                     entry.target.dataset.done = '1';
                     animate(entry.target);
                     observer.unobserve(entry.target);
