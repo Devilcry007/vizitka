@@ -18,6 +18,15 @@
         .hero { justify-content: center; }
         .hero-content { padding-left: 5rem; }
 
+        /* Убираем подчёркивание «Никита» (перебиваем common.css) */
+        .hero h1 .highlight,
+        .hero h1 .highlight span {
+            border-bottom: none !important;
+            text-decoration: none !important;
+            box-shadow: none !important;
+            background-image: none !important;
+        }
+
         /* ========== Онлайн-статус ========== */
         .online-status {
             display: inline-flex;
@@ -128,13 +137,16 @@
                 display: block !important;
                 object-fit: contain !important;
             }
+
+            /* Бейдж «путь эксперта» — сдвигаем влево, чтобы совпал с текстом */
             html body .hero-badge {
                 width: auto !important;
                 font-size: 0.6rem !important;
                 padding: 0.15rem 0.5rem !important;
-                margin: 0 0 6px 0 !important;
+                margin: 0 0 6px -8px !important;
                 letter-spacing: 0.5px !important;
             }
+
             html body .hero h1 {
                 font-size: 1rem !important;
                 line-height: 1.24 !important;
@@ -145,12 +157,17 @@
                 line-height: 1.38 !important;
                 margin: 6px 0 !important;
             }
-            html body .hero h1 .highlight {
-                border-bottom-width: 1.5px !important;
-                text-decoration-thickness: 1.5px !important;
-                text-underline-offset: 3px !important;
+
+            /* Ещё раз гарантированно убираем подчёркивание на мобилке */
+            html body .hero h1 .highlight,
+            html body .hero h1 .highlight span {
+                border-bottom: none !important;
+                text-decoration: none !important;
+                box-shadow: none !important;
+                background-image: none !important;
                 padding-bottom: 0 !important;
             }
+
             html body .hero-content .btn-group {
                 display: flex !important;
                 flex-direction: row !important;
@@ -218,7 +235,7 @@
         <div class="hero">
             <div class="hero-content">
                 <div class="hero-badge">Путь эксперта</div>
-                <h1>Привет, я <span class="highlight">Никита,</span><br>специалист - который Вам нужен</h1>
+                <h1>Привет, я <span class="highlight">Никита</span><span class="comma-black">,</span><br>специалист - который Вам нужен</h1>
                 <p class="hero-description">
                     Результат, который видно. 6 лет опыта, более 100 довольных клиентов. Моя история — от новичка до топ-специалиста, для которого нет нерешаемых задач.
                 </p>
